@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: posts
+  name: user
 spec:
   containers:
-    - name: posts
-      image: jites1dev/posts:0.0.1
+    - name: user
+      image: jites1dev/user:0.0.1
       imagePullPolicy: Never
