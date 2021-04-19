@@ -4,11 +4,11 @@ const user = require('../models/user');
 
 const router = express.Router();
 
-router.get('/', (req, res, next) => {
-  next(ErrorHandler.NotFound());
-});
+// router.get('/', (req, res, next) => {
+//   next(ErrorHandler.NotFound());
+// });
 
-router.get('/user', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const allUser = await user.find();
     res.send(allUser);
@@ -17,7 +17,7 @@ router.get('/user', async (req, res) => {
   }
 });
 
-router.post('/user', (req, res) => {
+router.post('/', (req, res) => {
   try {
     const newUser = new user({
       name: req.body.name,

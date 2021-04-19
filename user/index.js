@@ -1,11 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mainRouter = require('./routes/user');
+const userRoute = require('./routes/user');
 const ErrorHandler = require('./error/errorhandler');
 const mongoose = require('mongoose');
-
+const morgan = require('morgan');
 const app = express();
-
+const logger = require('./config/logger');
 app.use(bodyParser.json());
 
 mongoose
@@ -22,12 +22,14 @@ app.use((err, req, res, next) => {
       },
     });
   }
-  console.log('Error', err.message);
+  logger.log('Error', err.message);
   next();
 });
 
-app.use(mainRouter);
+app.use(morgan('combined'));
+app.use('/user', userRoute);
 
 app.listen(4000, () => {
-  console.log('Listening on 4000');
+  logger.log('info', 'This is v3');
+  logger.log('info', 'Listening on 4000');
 });
