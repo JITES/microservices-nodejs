@@ -25,6 +25,6 @@ app.post('/posts/:id/comments', (req, res) => {
   res.status(201).send;
 });
 
-app.listen(6005, () => {
-  console.log('listening on 4001');
+app.listen(3001, () => {
+  console.log('listening on 3001');
 });
